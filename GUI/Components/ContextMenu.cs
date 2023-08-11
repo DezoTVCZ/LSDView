@@ -28,5 +28,14 @@ namespace LSDView.GUI.Components
         public override bool Equals(object obj) { return obj is ContextMenu other && Equals(other); }
 
         public override int GetHashCode() { return (MenuItems != null ? MenuItems.GetHashCode() : 0); }
+
+        //tak snad to dìlám dobøe
+        private void replaceModelMenuItem_Click()
+        {
+            LBDModelReplacer replacer = new LBDModelReplacer();
+            replacer.Show();
+            // pøedání informací o vybraném modelu do replaceru (pokud je to potøeba)
+        }
+
     }
 }
