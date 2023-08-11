@@ -67,7 +67,7 @@ namespace LSDView.GUI.Components
         private void replaceModelMenuItem_Click()
         {
             LBDModelReplacer replacer = new LBDModelReplacer();
-            replacer.Show();
+            //replacer.Show();
             // pøedání informací o vybraném modelu do replaceru (pokud je to potøeba)
         }
     }
