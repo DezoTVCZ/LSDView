@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LSDView", "LSDView.csproj", "{0138A340-4992-44EC-9BF6-4812B41A9C4A}"
 EndProject
 Global
@@ -12,5 +15,11 @@ Global
 		{0138A340-4992-44EC-9BF6-4812B41A9C4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0138A340-4992-44EC-9BF6-4812B41A9C4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0138A340-4992-44EC-9BF6-4812B41A9C4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37B1F4C5-6D79-4558-96A1-61FE51A8751C}
 	EndGlobalSection
 EndGlobal
