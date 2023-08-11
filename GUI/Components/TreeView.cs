@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using ImGuiNET;
 
 namespace LSDView.GUI.Components
@@ -64,11 +66,20 @@ namespace LSDView.GUI.Components
         }
 
         // Your existing method
-        private void replaceModelMenuItem_Click()
+        private void ReplaceModelMenuItem_Click()
         {
-            LBDModelReplacer replacer = new LBDModelReplacer();
-            //replacer.Show();
-            // pøedání informací o vybraném modelu do replaceru (pokud je to potøeba)
+            string lbdFilePath = _selectedNode.Tag.ToString();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "TMD files (*.tmd)|*.tmd";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string tmdFilePath = openFileDialog.FileName;
+                LBDModelReplacer replacer = new LBDModelReplacer();
+                replacer.ReplaceModelFromTMD(lbdFilePath, tmdFilePath, 0); // Pøedpokládám, že modelIndex je 0 pro tento pøíklad
+            }
         }
+
+
     }
 }
