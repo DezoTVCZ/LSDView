@@ -37,7 +37,7 @@ namespace LSDView.GUI.Components
             ImGui.BeginChild("tree");
             foreach (var node in Nodes)
             {
-                node.OnSelectInChildren(select);
+                node.OnSelectInChildren(Select);
                 node.FlagsInChildren(ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.OpenOnDoubleClick);
                 node.Render();
 
@@ -54,7 +54,7 @@ namespace LSDView.GUI.Components
             ImGui.EndChild();
         }
 
-        private void select(TreeNode node)
+        private void Select(TreeNode node)
         {
             if (_selected != null)
             {
