@@ -1,45 +1,32 @@
 using System;
-using System.Collections.Generic;
-using ImGuiNET;
-using libLSD.Formats; // Pøidáno pro práci s LBD a TMD
+using System.Windows.Forms;
+using System.IO;
 
-namespace LSDView.GUI.Components
+public class CustomContextMenu : ContextMenu
 {
-    public class ContextMenu
+    public CustomContextMenu()
     {
-        public readonly Dictionary<string, Action> MenuItems;
+        MenuItem replaceModelItem = new MenuItem("Replace Model");
+        replaceModelItem.Click += ReplaceModelItem_Click;
+        this.MenuItems.Add(replaceModelItem);
+    }
 
-        public ContextMenu(Dictionary<string, Action> menuItems) { MenuItems = menuItems; }
+    private void ReplaceModelItem_Click(object sender, EventArgs e)
+    {
+        // Assuming you have a reference to the TreeView or the selected model
+        // string selectedModel = ...;
 
-        public void Render()
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Title = "Select TMD file to replace";
+        openFileDialog.Filter = "TMD Files|*.tmd";
+
+        if (openFileDialog.ShowDialog() == DialogResult.OK)
         {
-            if (ImGui.BeginPopupContextItem())
-            {
-                foreach (var item in MenuItems)
-                {
-                    if (ImGui.Selectable(item.Key)) item.Value();
-                }
-
-                // Pøidání položky pro nahrazení modelu
-                if (ImGui.Selectable("Replace Model")) ReplaceModelMenuItem_Click();
-
-                ImGui.EndPopup();
-            }
-        }
-
-        public bool Equals(ContextMenu other) { return Equals(MenuItems, other.MenuItems); }
-
-        public override bool Equals(object obj) { return obj is ContextMenu other && Equals(other); }
-
-        public override int GetHashCode() { return (MenuItems != null ? MenuItems.GetHashCode() : 0); }
-
-        // Metoda pro spuštìní funkce nahrazení modelu
-        private void ReplaceModelMenuItem_Click()
-        {
-            // TODO: Zde bude kód pro nahrazení modelu.
-            // Mùžete napøíklad vytvoøit instanci tøídy LBDModelReplacer a zavolat její metodu.
+            string selectedFilePath = openFileDialog.FileName;
+            // Here you can call the logic to replace the model in the LBD file
+            // For example:
             // LBDModelReplacer replacer = new LBDModelReplacer();
-            // replacer.ReplaceModel(...);
+            // replacer.ReplaceModelInLBD(selectedModel, selectedFilePath);
         }
     }
 }
